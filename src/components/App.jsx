@@ -1,7 +1,63 @@
-import "../css/App.css";
+import { useEffect, useRef, useState } from "react";
+import { fetchData, WEBSITE_NAME, WEBSITE_URL } from "../js/fetch";
+import { shuffle } from "../js/helpers";
+import Scoreboard from "./Scoreboard";
+import CardList from "./CardList";
 
-function App() {
-  return <></>;
+export default function App() {
+  const hasAppLoaded = useRef(false);
+  const cards = useRef([]);
+  const selectedCards = useRef(new Set());
+  const currentScore = useRef(0);
+  const highestScore = useRef(0);
+  const [randomCards, setRandomCards] = useState([]);
+  const totalCards = 10;
+
+  useEffect(() => {
+    if (!hasAppLoaded.current) {
+      initialiseImages("animals");
+      hasAppLoaded.current = true;
+    }
+  }, []);
+
+  async function initialiseImages(query) {
+    cards.current = await fetchData(query);
+    setRandomCards(generateRandomCards());
+  }
+
+  function handleCardSelection(event) {
+    const cardId = event.currentTarget.id;
+    const set = selectedCards.current;
+    const isCardFound = set.has(cardId);
+
+    if (!isCardFound) {
+      set.add(cardId);
+      currentScore.current += 1;
+
+      if (currentScore.current > highestScore.current) {
+        highestScore.current = currentScore.current;
+      }
+    } else {
+      selectedCards.current = new Set();
+      currentScore.current = 0;
+    }
+
+    setRandomCards(generateRandomCards());
+  }
+
+  function generateRandomCards() {
+    const randomCards = shuffle(cards.current.photos).slice(0, totalCards);
+    return randomCards;
+  }
+
+  return (
+    <>
+      <Scoreboard currentScore={currentScore.current} highestScore={highestScore.current}></Scoreboard>
+      <CardList
+        cards={randomCards}
+        websiteName={WEBSITE_NAME}
+        websiteUrl={WEBSITE_URL}
+        onClick={handleCardSelection}></CardList>
+    </>
+  );
 }
-
-export default App;
