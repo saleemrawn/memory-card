@@ -21,17 +21,6 @@ a {
   font-weight: var(--font-semibold);
 }
 
-button {
-  border: none;
-  width: 100%;
-  height: auto;
-  padding: 0;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
 #root {
   display: grid;
   grid-template-columns: 1fr;
