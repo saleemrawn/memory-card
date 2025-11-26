@@ -1,0 +1,42 @@
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--dark-purple);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--card-border-radius);
+  transition: opacity 0.15s ease-in-out;
+  box-shadow: var(--card-shadow);
+}
+
+.card::before {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: var(--card-gradient);
+  border-radius: var(--card-border-radius);
+}
+
+.card:hover {
+  opacity: 0.5;
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-name {
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    aspect-ratio: 1 / 1;
+  }
+}
