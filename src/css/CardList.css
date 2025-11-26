@@ -1,0 +1,9 @@
+.card-container ul {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(20.625rem, 1fr));
+  grid-template-rows: 1fr;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
