@@ -9,11 +9,11 @@ export default function Card({
   onClick,
 }) {
   return (
-    <button className="card" onClick={onClick} id={id}>
-      <img src={imgUrl} alt={photoAlt} />
-      <div className="card-name">
+    <button className="card" onClick={onClick} id={id} style={{ backgroundImage: `url(${imgUrl})` }}>
+      <span class="sr-only">{photoAlt}</span>
+      <span className="card-name">
         Photo by <a href={photographerUrl}>{photographer}</a> on <a href={websiteUrl}>{websiteName}</a>
-      </div>
+      </span>
     </button>
   );
 }
