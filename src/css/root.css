@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+:root {
+  --dark-purple: #2c2638;
+  --mid-purple: #3c364c;
+  --light-blue: #bdd4f1;
+  --red: #ff7370;
+  --white: #f1f2f3;
+
+  --font-family: "Space Grotesk", Helvetica, Arial, sans-serif;
+  --font-regular: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --rounded-xl: 1.5rem;
+  --rounded-full: calc(infinity * 1px);
+
+  --card-background: var(--mid-purple);
+  --card-border-radius: var(--rounded-xl);
+  --card-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  --card-shadow-hover: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  --card-gradient: linear-gradient(0deg, rgba(44, 38, 56, 1) 0%, rgba(44, 38, 56, 0) 50%);
+
+  --image-border-radius: var(--rounded-xl);
+  --score-border-radius: var(--rounded-xl);
+}
