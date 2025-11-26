@@ -1,0 +1,48 @@
+.scoreboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-rows: 1fr;
+  gap: 1rem;
+}
+
+.current-score,
+.highest-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--score-border-radius);
+  padding: 1rem 0;
+}
+
+.current-score {
+  background-color: var(--light-blue);
+  color: var(--dark-purple);
+}
+
+.highest-score {
+  background-color: var(--red);
+}
+
+.score-label {
+  font-weight: var(--font-semibold);
+}
+
+.score-number {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .scoreboard-container {
+    gap: 1.5rem;
+  }
+
+  .current-score,
+  .highest-score {
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .score-number {
+    font-size: 2.5rem;
+  }
+}
