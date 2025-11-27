@@ -1,9 +1,21 @@
-.logo {
-  height: 3.75rem;
+header {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 1fr;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo img {
-  width: auto;
-  height: 100%;
-  object-fit: cover;
+.logo {
+  font-size: 2rem;
+  font-family: var(--logo-font);
+  text-transform: lowercase;
+}
+
+.logo span {
+  font-weight: var(--logo-weight);
+}
+
+.config {
+  justify-self: flex-end;
 }

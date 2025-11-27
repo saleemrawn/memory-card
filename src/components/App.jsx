@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { fetchData, WEBSITE_NAME, WEBSITE_URL } from "../js/fetch";
 import { shuffle } from "../js/helpers";
+import Header from "./Header";
 import Scoreboard from "./Scoreboard";
 import CardList from "./CardList";
 
@@ -50,14 +51,17 @@ export default function App() {
     return randomCards;
   }
 
+  function handleReset() {
+    currentScore.current = 0;
+    highestScore.current = 0;
+    setRandomCards(generateRandomCards());
+  }
+
   return (
     <>
-      <Scoreboard currentScore={currentScore.current} highestScore={highestScore.current}></Scoreboard>
-      <CardList
-        cards={randomCards}
-        websiteName={WEBSITE_NAME}
-        websiteUrl={WEBSITE_URL}
-        onClick={handleCardSelection}></CardList>
+      <Header resetOnClick={handleReset} />
+      <Scoreboard currentScore={currentScore.current} highestScore={highestScore.current} />
+      <CardList cards={randomCards} websiteName={WEBSITE_NAME} websiteUrl={WEBSITE_URL} onClick={handleCardSelection} />
     </>
   );
 }

@@ -1,10 +1,13 @@
-import Logo from "../assets/logo.png";
-
-export default function Header() {
+export default function Header({ resetOnClick }) {
   return (
     <header>
       <div className="logo">
-        <img src={Logo} alt="" />
+        Memory<span>Game</span>
+      </div>
+      <div className="config">
+        <button className="primary reset" onClick={resetOnClick}>
+          Reset
+        </button>
       </div>
     </header>
   );
