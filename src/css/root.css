@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap");
 
 :root {
   --dark-purple: #2c2638;
@@ -11,6 +11,10 @@
   --font-regular: 400;
   --font-semibold: 600;
   --font-bold: 700;
+  --font-black: 900;
+
+  --logo-font: "Quicksand", Helvetica, Arial, sans-serif;
+  --logo-weight: var(--font-black);
 
   --rounded-xl: 1.5rem;
   --rounded-full: calc(infinity * 1px);
