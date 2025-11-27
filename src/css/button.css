@@ -6,3 +6,28 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+button.primary {
+  font-size: 1rem;
+  background-color: var(--button-primary-background);
+  border-radius: var(--button-border-radius);
+  font-weight: var(--button-font-weight);
+  padding: 0.75rem 1.5rem;
+  transition: opacity 0.15s ease-in-out;
+}
+
+button.primary:hover {
+  opacity: 0.5;
+}
+
+button.reset {
+  display: flex;
+  align-items: center;
+}
+
+button.reset::before {
+  content: "\27F2";
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: var(--font-regular);
+}

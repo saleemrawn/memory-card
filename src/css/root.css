@@ -3,6 +3,7 @@
 :root {
   --dark-purple: #2c2638;
   --mid-purple: #3c364c;
+  --light-purple: #6d54b5;
   --light-blue: #bdd4f1;
   --red: #ff7370;
   --white: #f1f2f3;
@@ -18,6 +19,10 @@
 
   --rounded-xl: 1.5rem;
   --rounded-full: calc(infinity * 1px);
+
+  --button-font-weight: var(--font-semibold);
+  --button-border-radius: var(--rounded-full);
+  --button-primary-background: var(--light-purple);
 
   --card-background: var(--mid-purple);
   --card-border-radius: var(--rounded-xl);
