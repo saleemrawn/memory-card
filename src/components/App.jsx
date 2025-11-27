@@ -12,14 +12,21 @@ export default function App() {
   const currentScore = useRef(0);
   const highestScore = useRef(0);
   const [randomCards, setRandomCards] = useState([]);
+  const [imageQuery, setImageQuery] = useState("animals");
+  const imageTypes = [{ name: "animals" }, { name: "cars" }, { name: "flowers" }];
   const totalCards = 10;
 
   useEffect(() => {
     if (!hasAppLoaded.current) {
-      initialiseImages("animals");
+      initialiseImages(imageQuery);
       hasAppLoaded.current = true;
     }
   }, []);
+
+  useEffect(() => {
+    initialiseImages(imageQuery);
+    resetScores();
+  }, [imageQuery]);
 
   async function initialiseImages(query) {
     cards.current = await fetchData(query);
@@ -51,15 +58,24 @@ export default function App() {
     return randomCards;
   }
 
+  function handleImageSelect(event) {
+    resetScores();
+    setImageQuery(event.target.value);
+  }
+
   function handleReset() {
+    resetScores();
+    setRandomCards(generateRandomCards());
+  }
+
+  function resetScores() {
     currentScore.current = 0;
     highestScore.current = 0;
-    setRandomCards(generateRandomCards());
   }
 
   return (
     <>
-      <Header resetOnClick={handleReset} />
+      <Header imageTypes={imageTypes} imageOnChange={handleImageSelect} resetOnClick={handleReset} />
       <Scoreboard currentScore={currentScore.current} highestScore={highestScore.current} />
       <CardList cards={randomCards} websiteName={WEBSITE_NAME} websiteUrl={WEBSITE_URL} onClick={handleCardSelection} />
     </>
