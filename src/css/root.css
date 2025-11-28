@@ -37,4 +37,6 @@
 
   --image-border-radius: var(--rounded-xl);
   --score-border-radius: var(--rounded-xl);
+
+  --header-height: 3.75rem;
 }
