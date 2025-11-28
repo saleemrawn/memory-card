@@ -7,7 +7,7 @@ export default function Header({ imageTypes, imageOnChange, resetOnClick }) {
       <div className="config">
         <div className="card-image-select">
           <label htmlFor="cardImageSelect">Choose images</label>
-          <select name="card-images" id="cardImageSelect" className="round" onChange={imageOnChange}>
+          <select name="card-images" id="cardImageSelect" onChange={imageOnChange}>
             {imageTypes.map((type) => (
               <option key={type.name} value={type.name}>
                 {type.name}
