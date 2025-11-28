@@ -1,15 +1,17 @@
 header {
   display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr;
   justify-content: space-between;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .logo {
   font-size: 2rem;
   font-family: var(--logo-font);
   text-transform: lowercase;
+  text-align: center;
 }
 
 .logo span {
@@ -17,5 +19,68 @@ header {
 }
 
 .config {
-  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-image-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-image-select,
+.card-image-select select,
+.card-image-select .reset {
+  width: 100%;
+}
+
+.reset {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-height: 2.8125rem;
+}
+
+.reset::before {
+  content: "\27F2";
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: var(--font-regular);
+}
+
+@media (min-width: 768px) {
+  header {
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: 1fr;
+    height: var(--header-height);
+    gap: 0;
+  }
+
+  .reset {
+    width: unset;
+    max-height: unset;
+  }
+
+  .logo {
+    text-align: left;
+  }
+
+  .config {
+    flex-direction: row;
+    justify-self: flex-end;
+  }
+
+  .card-image-select {
+    flex-direction: row;
+    height: var(--header-height);
+  }
+
+  .card-image-select select {
+    width: unset;
+    min-width: 12.5rem;
+  }
 }

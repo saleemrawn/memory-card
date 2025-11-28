@@ -19,15 +19,3 @@ button.primary {
 button.primary:hover {
   opacity: 0.5;
 }
-
-button.reset {
-  display: flex;
-  align-items: center;
-}
-
-button.reset::before {
-  content: "\27F2";
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: var(--font-regular);
-}
