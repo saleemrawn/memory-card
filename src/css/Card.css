@@ -37,6 +37,27 @@
   font-size: 0.875rem;
 }
 
+.valid::before,
+.invalid::before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5.625rem;
+  color: var(--white);
+  height: 100%;
+  width: 100%;
+}
+
+.valid::before {
+  content: "\2714";
+  background: rgba(0, 128, 0, 0.8);
+}
+
+.invalid::before {
+  content: "\2718";
+  background: rgba(255, 0, 0, 0.8);
+}
+
 @media (min-width: 768px) {
   .card {
     aspect-ratio: 1 / 1;

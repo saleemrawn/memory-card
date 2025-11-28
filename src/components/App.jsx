@@ -14,6 +14,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [randomCards, setRandomCards] = useState([]);
   const [imageQuery, setImageQuery] = useState("animals");
+  const [cardStatus, setCardStatus] = useState({});
   const imageTypes = [{ name: "animals" }, { name: "cars" }, { name: "flowers" }];
   const totalCards = 10;
 
@@ -37,23 +38,24 @@ export default function App() {
   }
 
   function handleCardSelection(event) {
-    const cardId = event.currentTarget.id;
+    const card = event.currentTarget;
+    const cardId = card.id;
     const set = selectedCards.current;
     const isCardFound = set.has(cardId);
 
     if (!isCardFound) {
       set.add(cardId);
       currentScore.current += 1;
-
-      if (currentScore.current > highestScore.current) {
-        highestScore.current = currentScore.current;
-      }
+      highestScore.current = Math.max(highestScore.current, currentScore.current);
+      setCardStatus((prev) => ({ ...prev, [cardId]: "valid" }));
     } else {
       selectedCards.current = new Set();
       currentScore.current = 0;
+      setCardStatus((prev) => ({ ...prev, [cardId]: "invalid" }));
     }
 
-    setRandomCards(generateRandomCards());
+    setTimeout(() => setRandomCards(generateRandomCards()), 500);
+    setTimeout(() => setCardStatus((prev) => ({ ...prev, [cardId]: null })), 600);
   }
 
   function generateRandomCards() {
@@ -86,6 +88,7 @@ export default function App() {
         websiteUrl={WEBSITE_URL}
         onClick={handleCardSelection}
         isLoading={isLoading}
+        cardStatus={cardStatus}
       />
     </>
   );

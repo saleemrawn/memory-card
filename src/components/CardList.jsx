@@ -1,7 +1,7 @@
 import Card from "./Card";
 import Loader from "./Loader";
 
-export default function CardList({ cards, websiteName, websiteUrl, onClick, isLoading }) {
+export default function CardList({ cards, websiteName, websiteUrl, onClick, isLoading, cardStatus }) {
   return (
     <div className="card-container">
       <Loader isLoading={isLoading} />
@@ -17,7 +17,8 @@ export default function CardList({ cards, websiteName, websiteUrl, onClick, isLo
                 photographerUrl={card.photographer_url}
                 websiteName={websiteName}
                 websiteUrl={websiteUrl}
-                onClick={onClick}></Card>
+                onClick={onClick}
+                cardStatus={cardStatus[card.id]}></Card>
             </li>
           );
         })}
