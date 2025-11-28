@@ -1,3 +1,7 @@
+.card-container {
+  position: relative;
+}
+
 .card-container ul {
   display: grid;
   list-style: none;

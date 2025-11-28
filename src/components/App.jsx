@@ -11,6 +11,7 @@ export default function App() {
   const selectedCards = useRef(new Set());
   const currentScore = useRef(0);
   const highestScore = useRef(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [randomCards, setRandomCards] = useState([]);
   const [imageQuery, setImageQuery] = useState("animals");
   const imageTypes = [{ name: "animals" }, { name: "cars" }, { name: "flowers" }];
@@ -29,8 +30,10 @@ export default function App() {
   }, [imageQuery]);
 
   async function initialiseImages(query) {
+    setIsLoading(true);
     cards.current = await fetchData(query);
     setRandomCards(generateRandomCards());
+    setTimeout(() => setIsLoading(false), 2000);
   }
 
   function handleCardSelection(event) {
@@ -77,7 +80,13 @@ export default function App() {
     <>
       <Header imageTypes={imageTypes} imageOnChange={handleImageSelect} resetOnClick={handleReset} />
       <Scoreboard currentScore={currentScore.current} highestScore={highestScore.current} />
-      <CardList cards={randomCards} websiteName={WEBSITE_NAME} websiteUrl={WEBSITE_URL} onClick={handleCardSelection} />
+      <CardList
+        cards={randomCards}
+        websiteName={WEBSITE_NAME}
+        websiteUrl={WEBSITE_URL}
+        onClick={handleCardSelection}
+        isLoading={isLoading}
+      />
     </>
   );
 }

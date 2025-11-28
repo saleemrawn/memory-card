@@ -1,8 +1,10 @@
 import Card from "./Card";
+import Loader from "./Loader";
 
-export default function CardList({ cards, websiteName, websiteUrl, onClick }) {
+export default function CardList({ cards, websiteName, websiteUrl, onClick, isLoading }) {
   return (
     <div className="card-container">
+      <Loader isLoading={isLoading} />
       <ul>
         {cards.map((card) => {
           return (
